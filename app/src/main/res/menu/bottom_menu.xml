@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/products"
+        android:icon="@drawable/ic_baseline_fastfood"
+        app:showAsAction="ifRoom"
+        android:title="@string/products" />
+
+    <item
+        android:id="@+id/basket"
+        android:icon="@drawable/ic_baseline_shopping_basket"
+        app:showAsAction="ifRoom"
+        android:title="@string/basket" />
+
+    <item
+        android:id="@+id/rocketAnimationTest"
+        app:showAsAction="ifRoom"
+        android:title="@string/testrocket"
+        android:icon="@drawable/ic_baseline_edit_attributes_24"/>
+
+
+</menu>
