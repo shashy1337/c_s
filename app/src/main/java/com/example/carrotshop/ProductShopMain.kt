@@ -35,7 +35,7 @@ class ProductShopMain : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapterV = VegetableAdapter()
+        val adapterV = VegetableAdapter(requireActivity() as MainActivity)
         val rv = view.findViewById<RecyclerView>(R.id.vegetableRecyclerView)
 
         rv.apply {

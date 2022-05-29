@@ -11,4 +11,5 @@
     <string name="cucumber">cucumber</string>
     <string name="title1">Title1</string>
     <string name="content">Content</string>
+    <string name="fab_button">FAB BUTTON</string>
 </resources>

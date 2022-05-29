@@ -8,11 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.carrotshop.R
 import com.example.carrotshop.model.AdvertiseInfoClass
 import com.example.carrotshop.model.ItemRecyclerView
+import com.example.carrotshop.model.OnItemClickListener
 import com.hannesdorfmann.adapterdelegates4.AbsListItemAdapterDelegate
 
 class AdvertiseDelegateAdapter :
     AbsListItemAdapterDelegate<AdvertiseInfoClass, ItemRecyclerView,
-            AdvertiseDelegateAdapter.AdvHolder>() {
+            AdvertiseDelegateAdapter.AdvHolder>(){
 
     class AdvHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title = itemView.findViewById<TextView>(R.id.title_ad)
@@ -45,4 +46,5 @@ class AdvertiseDelegateAdapter :
     ) {
         holder.onBind(item)
     }
+
 }

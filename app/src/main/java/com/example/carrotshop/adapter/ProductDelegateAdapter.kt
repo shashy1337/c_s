@@ -5,14 +5,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carrotshop.R
 import com.example.carrotshop.model.DataVegetable
 import com.example.carrotshop.model.ItemRecyclerView
+import com.example.carrotshop.model.OnItemClickListener
 import com.hannesdorfmann.adapterdelegates4.AbsListItemAdapterDelegate
 
-class ProductDelegateAdapter :
-    AbsListItemAdapterDelegate<DataVegetable, ItemRecyclerView, ProductDelegateAdapter.VegetableHolder>() {
+class ProductDelegateAdapter(private val clickListener: OnItemClickListener) :
+    AbsListItemAdapterDelegate<DataVegetable, ItemRecyclerView, ProductDelegateAdapter.VegetableHolder>()
+    , OnItemClickListener {
 
     class VegetableHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -46,5 +49,12 @@ class ProductDelegateAdapter :
         payloads: MutableList<Any>
     ) {
         holder.onBind(item)
+        holder
+            .itemView
+            .findViewById<CardView>(R.id.item_container)
+            .setOnClickListener { clickListener.click(item) }
     }
+
+    override fun click(items: DataVegetable) {}
+
 }
