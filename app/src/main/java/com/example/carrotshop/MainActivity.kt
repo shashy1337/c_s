@@ -3,10 +3,14 @@ package com.example.carrotshop
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import com.example.carrotshop.model.DataVegetable
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,7 +63,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.basket -> {
                     supportFragmentManager
                         .beginTransaction()
-                        .replace(R.id.fragment_placeholder, ItemInfo())
+                        .replace(R.id.fragment_placeholder, BasketFragment())
                         .addToBackStack(null)
                         .commit()
                     return@setOnItemSelectedListener true
@@ -79,5 +83,18 @@ class MainActivity : AppCompatActivity() {
                 else -> return@setOnItemSelectedListener false
             }
         }
+    }
+
+    fun startDetailsFragment(vegetable: DataVegetable){
+        val bundle = Bundle()
+        bundle.putParcelable("vegetable", vegetable)
+        val fragmentInfo = ItemInfo()
+        fragmentInfo.arguments = bundle
+
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_placeholder, fragmentInfo)
+            .addToBackStack(null)
+            .commit()
     }
 }

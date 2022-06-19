@@ -18,13 +18,13 @@ class ProductShopMain : Fragment() {
 
 
     val itemList = listOf<ItemRecyclerView>(
-        DataVegetable(R.drawable.kabachok, "Кобачки"),
-        DataVegetable(R.drawable.onion, "Лук"),
+        DataVegetable(R.drawable.kabachok, "Кобачки", "Кобачки,300г"),
+        DataVegetable(R.drawable.onion, "Лук", "лук 30г"),
         AdvertiseInfoClass("Скидка 30% на кукумберы!", "спешите купить"),
-        DataVegetable(R.drawable.cucumber, "Огурцы"),
-        DataVegetable(R.drawable.tomato, "Томаты"),
+        DataVegetable(R.drawable.cucumber, "Огурцы", "Огурцы, 50г"),
+        DataVegetable(R.drawable.tomato, "Томаты", "50г"),
         AdvertiseInfoClass("Выходные с кабочками!", "спешите купить по лучшей цене!"),
-        DataVegetable(R.drawable.svekla, "Свекла"),
+        DataVegetable(R.drawable.svekla, "Свекла", "Cвекла 150г"),
         AdvertiseInfoClass("СВЕКЛААААА", "УРАААААА"),
     )
 
@@ -35,7 +35,7 @@ class ProductShopMain : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapterV = VegetableAdapter()
+        val adapterV = VegetableAdapter(requireActivity() as MainActivity)
         val rv = view.findViewById<RecyclerView>(R.id.vegetableRecyclerView)
 
         rv.apply {
@@ -44,7 +44,6 @@ class ProductShopMain : Fragment() {
             addItemDecoration(Offset())
             itemAnimator = SlideInLeftAnimator()
             layoutAnimation = loadLayoutAnimation(context, R.anim.layoutvegetable)
-
         }
 
         adapterV.items = itemList

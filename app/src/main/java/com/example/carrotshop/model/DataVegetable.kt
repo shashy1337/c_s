@@ -6,5 +6,5 @@ import com.example.carrotshop.model.ItemRecyclerView
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class DataVegetable(@DrawableRes val vegetableicon : Int, val vegetableName : String)
+data class DataVegetable(@DrawableRes val vegetableicon : Int, val vegetableName : String, val vegetableDescription: String)
     : Parcelable, ItemRecyclerView

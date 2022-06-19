@@ -4,10 +4,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carrotshop.R
 import com.example.carrotshop.model.AdvertiseInfoClass
+import com.example.carrotshop.model.DataVegetable
 import com.example.carrotshop.model.ItemRecyclerView
+import com.example.carrotshop.model.OnClickVegetable
 import com.hannesdorfmann.adapterdelegates4.AbsListItemAdapterDelegate
 
 class AdvertiseDelegateAdapter :
