@@ -1,0 +1,3 @@
+package com.example.carrotshop.Interfaces
+
+interface ItemRecyclerView

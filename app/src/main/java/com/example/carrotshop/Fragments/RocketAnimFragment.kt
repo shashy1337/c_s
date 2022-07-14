@@ -1,4 +1,4 @@
-package com.example.carrotshop
+package com.example.carrotshop.Fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import android.view.animation.BounceInterpolator
 import android.widget.Button
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import com.example.carrotshop.R
 
 
 class RocketAnimFragment : Fragment() {

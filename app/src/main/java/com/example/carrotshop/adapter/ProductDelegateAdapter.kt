@@ -9,8 +9,8 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carrotshop.R
 import com.example.carrotshop.model.DataVegetable
-import com.example.carrotshop.model.ItemRecyclerView
-import com.example.carrotshop.model.OnItemClickListener
+import com.example.carrotshop.Interfaces.ItemRecyclerView
+import com.example.carrotshop.Interfaces.OnItemClickListener
 import com.hannesdorfmann.adapterdelegates4.AbsListItemAdapterDelegate
 
 class ProductDelegateAdapter(private val clickListener: OnItemClickListener) :

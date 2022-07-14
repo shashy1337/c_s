@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activitys.MainActivity">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -23,8 +23,7 @@
             android:layout_height="?attr/actionBarSize"
             app:menu="@menu/app_bar_menu"
             app:navigationIcon="@drawable/ic_round_menu_24"
-            app:title="CarrotApp"
-            app:titleTextColor="@color/white" />
+            app:title="CarrotApp" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

@@ -3,5 +3,4 @@
     android:animation="@anim/recycler_view_animation"
     android:animationOrder="normal"
     android:interpolator="@android:anim/accelerate_interpolator">
-
 </layoutAnimation>

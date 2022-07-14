@@ -1,4 +1,4 @@
-package com.example.carrotshop
+package com.example.carrotshop.Fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,25 +8,20 @@ import android.view.animation.AnimationUtils.loadLayoutAnimation
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.carrotshop.Activitys.MainActivity
+import com.example.carrotshop.R
+import com.example.carrotshop.adapter.VegetableAdapter
 import com.example.carrotshop.decorations.Offset
 import com.example.carrotshop.model.AdvertiseInfoClass
 import com.example.carrotshop.model.DataVegetable
-import com.example.carrotshop.model.ItemRecyclerView
+import com.example.carrotshop.Interfaces.ItemRecyclerView
+import com.example.carrotshop.TimberConf.App
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 
 class ProductShopMain : Fragment() {
 
 
-    val itemList = listOf<ItemRecyclerView>(
-        DataVegetable(R.drawable.kabachok, "Кобачки"),
-        DataVegetable(R.drawable.onion, "Лук"),
-        AdvertiseInfoClass("Скидка 30% на кукумберы!", "спешите купить"),
-        DataVegetable(R.drawable.cucumber, "Огурцы"),
-        DataVegetable(R.drawable.tomato, "Томаты"),
-        AdvertiseInfoClass("Выходные с кабочками!", "спешите купить по лучшей цене!"),
-        DataVegetable(R.drawable.svekla, "Свекла"),
-        AdvertiseInfoClass("СВЕКЛААААА", "УРАААААА"),
-    )
+    val itemList = App.instance.itemList
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

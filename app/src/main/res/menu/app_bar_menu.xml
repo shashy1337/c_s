@@ -5,8 +5,13 @@
     <item
         android:id="@+id/settings"
         android:icon="@drawable/ic_round_settings"
-        app:showAsAction="ifRoom"
-        android:title="settings" />
+        android:title="@string/settings"
+        app:showAsAction="ifRoom" />
 
+    <item
+        android:id="@+id/favourites"
+        android:icon="@drawable/ic_baseline_favorite_border_24"
+        android:title="@string/favourites"
+        app:showAsAction="ifRoom" />
 
 </menu>

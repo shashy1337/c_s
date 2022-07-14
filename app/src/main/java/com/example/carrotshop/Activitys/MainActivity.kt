@@ -1,15 +1,20 @@
-package com.example.carrotshop
+package com.example.carrotshop.Activitys
 
+import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.ActionMode
 import android.widget.Toast
+import com.example.carrotshop.Fragments.FavouritesFragment
+import com.example.carrotshop.Fragments.ItemInfo
+import com.example.carrotshop.Fragments.ProductShopMain
+import com.example.carrotshop.R
+import com.example.carrotshop.Fragments.RocketAnimFragment
 import com.example.carrotshop.model.DataVegetable
-import com.example.carrotshop.model.ItemRecyclerView
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.snackbar.Snackbar
 import timber.log.Timber
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,6 +49,16 @@ class MainActivity : AppCompatActivity() {
                     R.id.settings -> {
                         Toast.makeText(this@MainActivity, "Настройки", Toast.LENGTH_SHORT)
                             .show()
+                        return@setOnMenuItemClickListener true
+                    }
+
+                    R.id.favourites -> {
+                        supportFragmentManager
+                            .beginTransaction()
+                            .replace(R.id.fragment_placeholder, FavouritesFragment())
+                            .addToBackStack(null)
+                            .commit()
+
                         return@setOnMenuItemClickListener true
                     }
 
@@ -121,5 +136,4 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         Timber.d("OnDestroy()_Method_Running...")
     }
-
 }

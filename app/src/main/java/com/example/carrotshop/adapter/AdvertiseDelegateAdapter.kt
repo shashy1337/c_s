@@ -7,8 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carrotshop.R
 import com.example.carrotshop.model.AdvertiseInfoClass
-import com.example.carrotshop.model.ItemRecyclerView
-import com.example.carrotshop.model.OnItemClickListener
+import com.example.carrotshop.Interfaces.ItemRecyclerView
 import com.hannesdorfmann.adapterdelegates4.AbsListItemAdapterDelegate
 
 class AdvertiseDelegateAdapter :
