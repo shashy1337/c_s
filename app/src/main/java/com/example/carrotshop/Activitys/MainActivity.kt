@@ -4,12 +4,22 @@ import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.Toast
+import androidx.core.view.MenuProvider
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.carrotshop.Fragments.FavouritesFragment
 import com.example.carrotshop.Fragments.ItemInfo
 import com.example.carrotshop.Fragments.ProductShopMain
 import com.example.carrotshop.R
 import com.example.carrotshop.Fragments.RocketAnimFragment
+import com.example.carrotshop.databinding.ActivityMainBinding
 import com.example.carrotshop.model.DataVegetable
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -18,100 +28,55 @@ import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding : ActivityMainBinding
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        navController = this.findNavController(R.id.myNavHostController)
         initTopBottomBar()
-
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.fragment_placeholder, ProductShopMain())
-            .addToBackStack(null)
-            .commit()
-
         Timber.d("OnCreate()_Method_Running...")
-
     }
 
 
     private fun initTopBottomBar(){
-        val topBar = findViewById<MaterialToolbar>(R.id.TopToolbar)
-        val bottomBar = findViewById<BottomNavigationView>(R.id.bottom_bar)
-        topBar.apply {
-            this.setNavigationOnClickListener {
-                Toast.makeText(this@MainActivity, "Навигация", Toast.LENGTH_SHORT)
-                    .show()
+        setSupportActionBar(binding.TopToolbar)
+        NavigationUI.setupActionBarWithNavController(this,navController)
+        addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                // Add menu items here
+                menuInflater.inflate(R.menu.app_bar_menu, menu)
             }
 
-            this.setOnMenuItemClickListener {
-                when(it.itemId){
-                    R.id.settings -> {
-                        Toast.makeText(this@MainActivity, "Настройки", Toast.LENGTH_SHORT)
-                            .show()
-                        return@setOnMenuItemClickListener true
-                    }
-
-                    R.id.favourites -> {
-                        supportFragmentManager
-                            .beginTransaction()
-                            .replace(R.id.fragment_placeholder, FavouritesFragment())
-                            .addToBackStack(null)
-                            .commit()
-
-                        return@setOnMenuItemClickListener true
-                    }
-
-                    else -> return@setOnMenuItemClickListener false
-                }
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                // Handle the menu selection
+                return NavigationUI.onNavDestinationSelected(menuItem,navController)
             }
-        }
+        })
 
-        bottomBar.setOnItemSelectedListener {
-            when (it.itemId){
-                R.id.products -> {
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.fragment_placeholder, ProductShopMain())
-                        .addToBackStack(null)
-                        .commit()
-                    return@setOnItemSelectedListener true
-                }
-
-                R.id.basket -> {
-                    Toast.makeText(this, "Basket!", Toast.LENGTH_SHORT).show()
-                    return@setOnItemSelectedListener true
-                }
-
-                R.id.rocketAnimationTest -> {
-
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.fragment_placeholder, RocketAnimFragment())
-                        .addToBackStack(null)
-                        .commit()
-
-                    return@setOnItemSelectedListener true
-                }
-
-                else -> return@setOnItemSelectedListener false
-            }
-        }
+        NavigationUI.setupWithNavController(binding.bottomBar, navController)
     }
+
+
 
     fun launchItemInfo(item : DataVegetable){
         val bundle = Bundle()
         bundle.putParcelable("vegetable", item)
-        val fragment = ItemInfo()
-        fragment.arguments = bundle
-
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.fragment_placeholder, fragment)
-            .addToBackStack(null)
-            .commit()
+        navController.navigate(R.id.action_productShopMain_to_itemInfo, bundle)
     }
 
+    fun launchItemFav(item : DataVegetable){
+        val bundle = Bundle()
+        bundle.putParcelable("vegetable", item)
+        navController.navigate(R.id.action_favouritesFragment_to_itemInfo, bundle)
+    }
+
+
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp()
+    }
     override fun onStart() {
         super.onStart()
         Timber.d("OnStart()_Method_Running...")
@@ -136,4 +101,5 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         Timber.d("OnDestroy()_Method_Running...")
     }
+
 }

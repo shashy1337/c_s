@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.carrotshop.Activitys.MainActivity
 import com.example.carrotshop.R
 import com.example.carrotshop.TimberConf.App
-import com.example.carrotshop.adapter.VegetableOnlyAdapter
+import com.example.carrotshop.adapter.FavOnlyAdapter
 import com.example.carrotshop.decorations.Offset
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 
@@ -31,14 +31,13 @@ class FavouritesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_favourites, container, false)
     }
 
 
     fun initRecyclerFav(view: View){
         val rv = view.findViewById<RecyclerView>(R.id.favRV)
-        val adapterFav = VegetableOnlyAdapter(requireActivity() as MainActivity)
+        val adapterFav = FavOnlyAdapter(requireActivity() as MainActivity)
         rv.apply {
             adapter = adapterFav
             addItemDecoration(Offset())

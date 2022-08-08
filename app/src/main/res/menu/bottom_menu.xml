@@ -4,7 +4,7 @@
 
 
     <item
-        android:id="@+id/products"
+        android:id="@+id/productShopMainFragment"
         android:icon="@drawable/ic_baseline_fastfood"
         app:showAsAction="ifRoom"
         android:title="@string/products" />
@@ -16,7 +16,7 @@
         android:title="@string/basket" />
 
     <item
-        android:id="@+id/rocketAnimationTest"
+        android:id="@+id/rocketAnimFragment"
         app:showAsAction="ifRoom"
         android:title="@string/testrocket"
         android:icon="@drawable/ic_baseline_edit_attributes_24"/>
